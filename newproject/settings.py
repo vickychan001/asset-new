@@ -25,7 +25,7 @@ SECRET_KEY = 'django-insecure-gv)=_#-1oxv3jn1%!o32=+xewvi6hfxv6kr4nb!%16(m)cbrve
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = True
 
-ALLOWED_HOSTS = ['localhost', '127.0.0.1', 'asset-new-2.onrender.com']
+ALLOWED_HOSTS = ['*']
 
 
 
@@ -172,4 +172,9 @@ import os
 STATIC_URL = '/static/'
 
 # Add this line to specify where collected static files will be stored
-STATIC_ROOT = os.path.join(BASE_DIR, 'staticfiles')
+STATIC_ROOT = os.path.join(BASE_DIR, 'staticfiles')  # Folder where static files will be collected
+STATICFILES_DIRS = [os.path.join(BASE_DIR, 'static')]  # Additional directories for static files (if any)
+
+# Media files (user-uploaded content)
+MEDIA_URL = '/media/'
+MEDIA_ROOT = os.path.join(BASE_DIR, 'media')  # Folder where media files will be stored
