@@ -25,7 +25,8 @@ SECRET_KEY = 'django-insecure-gv)=_#-1oxv3jn1%!o32=+xewvi6hfxv6kr4nb!%16(m)cbrve
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = True
 
-ALLOWED_HOSTS = ['https://asset-new-2.onrender.com']
+ALLOWED_HOSTS = ['localhost', '127.0.0.1', 'asset-new-2.onrender.com']
+
 
 
 # Application definition
