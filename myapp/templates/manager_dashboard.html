@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Manager Dashboard</title>
+</head>
+<body>
+    <h1>Manager Dashboard</h1>
+    <div id="employees"></div>
+    <div id="assets"></div>
+
+    <script>
+        fetch('/api/manager/dashboard/', {
+            headers: {
+                'Authorization': `Bearer ${localStorage.getItem('access')}`
+            }
+        })
+        .then(response => response.json())
+        .then(data => {
+            if (data.employees) {
+                const employeesDiv = document.getElementById('employees');
+                data.employees.forEach(employee => {
+                    employeesDiv.innerHTML += `<p>${employee.first_name} ${employee.last_name} - ${employee.job_title}</p>`;
+                });
+            }
+            if (data.assets) {
+                const assetsDiv = document.getElementById('assets');
+                data.assets.forEach(asset => {
+                    assetsDiv.innerHTML += `<p>${asset.name} - ${asset.description} - Barcode: ${asset.barcode}</p>`;
+                });
+            }
+        });
+    </script>
+</body>
+</html>

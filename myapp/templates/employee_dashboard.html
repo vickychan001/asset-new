@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Employee Dashboard</title>
+</head>
+<body>
+    <h1>Employee Dashboard</h1>
+    <div id="employee-details"></div>
+    <div id="assets"></div>
+    <div id="maintenance-records"></div>
+
+    <script>
+        fetch('/api/employee/dashboard/', {
+            headers: {
+                'Authorization': `Bearer ${localStorage.getItem('access')}`
+            }
+        })
+        .then(response => response.json())
+        .then(data => {
+            if (data.employee) {
+                const employeeDetailsDiv = document.getElementById('employee-details');
+                employeeDetailsDiv.innerHTML = `<p>${data.employee.first_name} ${data.employee.last_name} - ${data.employee.job_title}</p>`;
+            }
+            if (data.assets) {
+                const assetsDiv = document.getElementById('assets');
+                data.assets.forEach(asset => {
+                    assetsDiv.innerHTML += `<p>${asset.name} - ${asset.description} - Barcode: ${asset.barcode}</p>`;
+                });
+            }
+            if (data.maintenance_records) {
+                const maintenanceRecordsDiv = document.getElementById('maintenance-records');
+                data.maintenance_records.forEach(record => {
+                    maintenanceRecordsDiv.innerHTML += `<p>${record.asset.name} - ${record.maintenance_date} - ${record.description}</p>`;
+                });
+            }
+        });
+    </script>
+</body>
+</html>
