@@ -1,6 +1,7 @@
 Django==4.2.4
 djangorestframework==3.14.0
 drf-yasg==1.21.5
+whitenoise==5.3.0
 djangorestframework-simplejwt==5.2.2
 mysqlclient==2.1.1  # If you're using MySQL
 gunicorn==20.1.0  # If you're deploying with Gunicorn
