@@ -173,7 +173,7 @@ STATIC_URL = '/static/'
 
 # Add this line to specify where collected static files will be stored
 STATIC_ROOT = os.path.join(BASE_DIR, 'staticfiles')  # Folder where static files will be collected
-STATICFILES_DIRS = [os.path.join(BASE_DIR, 'static')]  # Additional directories for static files (if any)
+ # Additional directories for static files (if any)
 
 # Media files (user-uploaded content)
 MEDIA_URL = '/media/'
